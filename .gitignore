@@ -1,0 +1,5 @@
+*.idea
+*.iml
+
+# Project exclude paths
+/lab1/target/
