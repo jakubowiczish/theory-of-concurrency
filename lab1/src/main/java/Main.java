@@ -3,9 +3,10 @@ public class Main {
     private static final int COUNTER = 10000000;
 
     public static void main(String[] args) throws InterruptedException {
-        testCounter();
+//        testCounter();
+//        testCounterSynchronized();
 
-        testCounterSynchronized();
+        testProducerConsumer();
     }
 
     private static void testCounter() throws InterruptedException {
@@ -54,5 +55,12 @@ public class Main {
         second.join();
 
         System.out.println("Synchronized counter: " + counterSynchronized.getCounter());
+    }
+
+    private static void testProducerConsumer() {
+        Buffer buffer = new Buffer();
+        (new Thread(new Producer(buffer))).start();
+//        new Thread(new Producer(buffer)).start();
+        (new Thread(new Consumer(buffer))).start();
     }
 }

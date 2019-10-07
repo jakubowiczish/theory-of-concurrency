@@ -6,11 +6,10 @@ public class Producer implements Runnable {
         this.buffer = buffer;
     }
 
+    @Override
     public void run() {
-
         for (int i = 0; i < Buffer.AMOUNT; i++) {
             buffer.put("message " + i);
         }
-
     }
 }
