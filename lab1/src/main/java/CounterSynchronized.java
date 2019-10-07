@@ -1,16 +1,16 @@
-public class CounterSynchronized {
+class CounterSynchronized {
 
     private int counter;
 
-    public synchronized void decrement() {
+    synchronized void decrement() {
         --counter;
     }
 
-    public synchronized void increment() {
+    synchronized void increment() {
         ++counter;
     }
 
-    public int getCounter() {
+    int getCounter() {
         return counter;
     }
 }

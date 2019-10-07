@@ -1,8 +1,38 @@
 public class Main {
 
-    public static final int COUNTER = 100000;
+    private static final int COUNTER = 10000000;
 
     public static void main(String[] args) throws InterruptedException {
+        testCounter();
+
+        testCounterSynchronized();
+    }
+
+    private static void testCounter() throws InterruptedException {
+        Counter counter = new Counter();
+
+        Thread first = new Thread(() -> {
+            for (int i = 0; i < COUNTER; i++) {
+                counter.increment();
+            }
+        });
+
+        Thread second = new Thread(() -> {
+            for (int i = 0; i < COUNTER; i++) {
+                counter.decrement();
+            }
+        });
+
+        first.start();
+        second.start();
+
+        first.join();
+        second.join();
+
+        System.out.println("Unsynchronized counter: " + counter.getCounter());
+    }
+
+    private static void testCounterSynchronized() throws InterruptedException {
         CounterSynchronized counterSynchronized = new CounterSynchronized();
 
         Thread first = new Thread(() -> {
@@ -23,6 +53,6 @@ public class Main {
         first.join();
         second.join();
 
-        System.out.println(counterSynchronized.getCounter());
+        System.out.println("Synchronized counter: " + counterSynchronized.getCounter());
     }
 }

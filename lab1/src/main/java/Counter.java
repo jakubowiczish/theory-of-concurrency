@@ -1,16 +1,16 @@
-public class Counter {
+class Counter {
 
     private int counter;
 
-    public void decrement() {
+    void decrement() {
         --counter;
     }
 
-    public void increment() {
+    void increment() {
         ++counter;
     }
 
-    public int getCounter() {
+    int getCounter() {
         return counter;
     }
 }
