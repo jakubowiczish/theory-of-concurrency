@@ -1,4 +1,4 @@
-class Buffer {
+public class Buffer {
 
     static int AMOUNT = 100;
 

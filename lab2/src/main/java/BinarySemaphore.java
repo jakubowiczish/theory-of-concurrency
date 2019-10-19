@@ -1,13 +1,13 @@
-public class BinarySemaphore {
+class BinarySemaphore {
 
     private static BinarySemaphore binarySemaphore;
-    private static boolean isAcquired;
+    private static boolean isFree = true;
 
     private BinarySemaphore() {
     }
 
-    public synchronized void increment() {
-        while (isAcquired) {
+    synchronized void acquire() {
+        while (!isFree) {
             try {
                 this.wait();
             } catch (InterruptedException e) {
@@ -15,28 +15,18 @@ public class BinarySemaphore {
             }
         }
 
-        isAcquired = true;
+        isFree = false;
         printAcquiredStatus();
-
-        this.notifyAll();
     }
 
-    public synchronized void decrement() {
-        while (!isAcquired) {
-            try {
-                this.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    synchronized void release() {
+        isFree = true;
+        notifyAll();
 
-        isAcquired = false;
         printAcquiredStatus();
-
-        this.notifyAll();
     }
 
-    public static BinarySemaphore getInstance() {
+    static BinarySemaphore getInstance() {
         if (binarySemaphore == null) {
             binarySemaphore = new BinarySemaphore();
         }
@@ -45,6 +35,6 @@ public class BinarySemaphore {
     }
 
     private static void printAcquiredStatus() {
-        System.out.println("Status: " + isAcquired);
+        System.out.println("Status: " + isFree);
     }
 }
