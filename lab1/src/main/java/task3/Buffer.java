@@ -1,12 +1,14 @@
+package task3;
+
 public class Buffer {
 
-    static int AMOUNT = 100;
+    public static int AMOUNT = 100;
 
     private String message;
 
     private boolean isMessageEmpty = true;
 
-    synchronized String take() {
+    public synchronized String take() {
         while (isMessageEmpty) {
             try {
                 wait();
@@ -21,7 +23,7 @@ public class Buffer {
         return message;
     }
 
-    synchronized void put(String message) {
+    public synchronized void put(String message) {
         while (!isMessageEmpty) {
             try {
                 wait();

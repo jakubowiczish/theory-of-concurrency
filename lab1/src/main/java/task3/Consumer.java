@@ -1,3 +1,5 @@
+package task3;
+
 public class Consumer implements Runnable {
 
     private Buffer buffer;

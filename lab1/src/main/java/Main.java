@@ -1,3 +1,9 @@
+import task1.Counter;
+import task2.CounterSynchronized;
+import task3.Buffer;
+import task3.Consumer;
+import task3.Producer;
+
 public class Main {
 
     private static final int COUNTER = 10000000;
@@ -60,7 +66,7 @@ public class Main {
     private static void testProducerConsumer() {
         Buffer buffer = new Buffer();
         (new Thread(new Producer(buffer))).start();
-//        new Thread(new Producer(buffer)).start();
+//        new Thread(new task3.Producer(buffer)).start();
         (new Thread(new Consumer(buffer))).start();
     }
 }

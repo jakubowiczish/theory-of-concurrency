@@ -1,3 +1,8 @@
+import task1.BinarySemaphore;
+import task1.Counter;
+import task2.Client;
+import task2.Shop;
+
 import java.util.ArrayList;
 import java.util.List;
 

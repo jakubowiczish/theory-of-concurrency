@@ -1,4 +1,6 @@
-class Shop {
+package task2;
+
+public class Shop {
 
     private CountingSemaphore countingSemaphore;
     private int baskets;
@@ -20,7 +22,7 @@ class Shop {
         --baskets;
     }
 
-    int getBaskets() {
+    public int getBaskets() {
         return baskets;
     }
 }

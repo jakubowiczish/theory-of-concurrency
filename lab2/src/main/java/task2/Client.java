@@ -1,3 +1,5 @@
+package task2;
+
 public class Client implements Runnable {
 
     private Shop shop;

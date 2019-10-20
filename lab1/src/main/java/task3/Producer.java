@@ -1,3 +1,5 @@
+package task3;
+
 public class Producer implements Runnable {
 
     private Buffer buffer;

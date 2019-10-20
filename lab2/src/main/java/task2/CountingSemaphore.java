@@ -1,3 +1,5 @@
+package task2;
+
 public class CountingSemaphore {
 
     private int counter;

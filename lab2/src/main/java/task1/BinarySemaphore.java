@@ -1,4 +1,6 @@
-class BinarySemaphore {
+package task1;
+
+public class BinarySemaphore {
 
     private static BinarySemaphore binarySemaphore;
     private static boolean isFree = true;
