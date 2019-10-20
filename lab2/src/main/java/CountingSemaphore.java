@@ -1,4 +1,4 @@
-class CountingSemaphore {
+public class CountingSemaphore {
 
     private int counter;
 
@@ -6,7 +6,7 @@ class CountingSemaphore {
         this.counter = counter;
     }
 
-    synchronized void acquire() {
+    public synchronized void acquire() {
         while (counter <= 0) {
             try {
                 wait();
@@ -18,7 +18,7 @@ class CountingSemaphore {
         --counter;
     }
 
-    synchronized void release() {
+    public synchronized void release() {
         ++counter;
         notifyAll();
     }

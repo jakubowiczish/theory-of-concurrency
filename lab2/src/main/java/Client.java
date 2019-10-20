@@ -3,7 +3,7 @@ public class Client implements Runnable {
     private Shop shop;
     private int id;
 
-    Client(Shop shop, int id) {
+    public Client(Shop shop, int id) {
         this.shop = shop;
         this.id = id;
     }

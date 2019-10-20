@@ -2,6 +2,5 @@
 *.iml
 
 # Project exclude paths
-/lab1/target/
-/lab2/target/
+*/target/
 *.class

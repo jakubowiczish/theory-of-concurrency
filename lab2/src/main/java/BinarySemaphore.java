@@ -6,7 +6,7 @@ class BinarySemaphore {
     private BinarySemaphore() {
     }
 
-    synchronized void acquire() {
+    public synchronized void acquire() {
         while (!isFree) {
             try {
                 this.wait();
@@ -19,14 +19,14 @@ class BinarySemaphore {
         printAcquiredStatus();
     }
 
-    synchronized void release() {
+    public synchronized void release() {
         isFree = true;
         notifyAll();
 
         printAcquiredStatus();
     }
 
-    static BinarySemaphore getInstance() {
+    public static BinarySemaphore getInstance() {
         if (binarySemaphore == null) {
             binarySemaphore = new BinarySemaphore();
         }
