@@ -11,14 +11,14 @@ public class Shop {
     }
 
     public void returnBasket(int clientId) {
-        System.out.println("Client: " + clientId + " returns basket");
+        System.out.println("Client: " + clientId + " returned basket");
         ++baskets;
         countingSemaphore.release();
     }
 
     public void getBasket(int clientId) {
         countingSemaphore.acquire();
-        System.out.println("Client: " + clientId + " takes basket");
+        System.out.println("Client: " + clientId + " took basket");
         --baskets;
     }
 

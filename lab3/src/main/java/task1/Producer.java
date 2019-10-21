@@ -1,3 +1,5 @@
+package task1;
+
 public class Producer implements Runnable {
 
     private final BoundedBuffer buffer;

@@ -1,3 +1,5 @@
+package task1;
+
 public class Consumer implements Runnable {
 
     private final BoundedBuffer buffer;
@@ -21,7 +23,7 @@ public class Consumer implements Runnable {
                 e.printStackTrace();
             }
 
-            System.out.println("Consumer: " + consumerId + " "  + message);
+            System.out.println("task1.Consumer: " + consumerId + " "  + message);
         }
     }
 }
