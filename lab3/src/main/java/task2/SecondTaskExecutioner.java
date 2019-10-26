@@ -1,27 +1,21 @@
 package task2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
 
 public class SecondTaskExecutioner {
 
+    private static final int NUMBER_OF_CUSTOMERS = 5;
+
     public static void executePrintersMonitor() throws InterruptedException {
         PrintersMonitor printersMonitor = new PrintersMonitor(3);
-        createTaskToPrint(printersMonitor, 5);
-    }
+        ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_CUSTOMERS);
 
-    private static void createTaskToPrint(PrintersMonitor printersMonitor, int numberOfPrinters) throws InterruptedException {
-        List<Thread> printers = new ArrayList<>();
-        for (int i = 0; i < numberOfPrinters; i++) {
-            printers.add(new Thread(new Customer(i, printersMonitor)));
-        }
+        IntStream.range(0, NUMBER_OF_CUSTOMERS)
+                .mapToObj(i -> new Customer(i, printersMonitor))
+                .forEach(executorService::submit);
 
-        for (int i = 0; i < numberOfPrinters; i++) {
-            printers.get(i).start();
-        }
-
-        for (int i = 0; i < numberOfPrinters; i++) {
-            printers.get(i).join();
-        }
+        executorService.shutdown();
     }
 }

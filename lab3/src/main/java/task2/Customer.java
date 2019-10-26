@@ -17,9 +17,9 @@ public class Customer implements Runnable {
         while (true) {
             try {
                 int printerId = printersMonitor.book();
-                System.out.println("Start of printing for: " + customerId);
+                System.out.println(customerId + " has started printing");
                 Thread.sleep(new Random().nextInt(1000) + 100);
-                System.out.println("End of printing for: " + customerId);
+                System.out.println(customerId + " has ended printing");
                 printersMonitor.release(printerId);
             } catch (InterruptedException e) {
                 e.printStackTrace();
