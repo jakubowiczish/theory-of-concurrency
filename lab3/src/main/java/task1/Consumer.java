@@ -23,7 +23,7 @@ public class Consumer implements Runnable {
                 e.printStackTrace();
             }
 
-            System.out.println("task1.Consumer: " + consumerId + " "  + message);
+            System.out.println("Consumer: " + consumerId + " "  + message);
         }
     }
 }
