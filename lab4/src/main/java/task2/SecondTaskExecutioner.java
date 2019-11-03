@@ -2,8 +2,8 @@ package task2;
 
 import java.util.stream.IntStream;
 
-import static task2.TimeToFileSaver.initializeDataCollecting;
-import static task2.TimeToFileSaver.saveCollectedData;
+import static task2.ToFileSaver.initializeDataCollecting;
+import static task2.ToFileSaver.saveCollectedData;
 
 /*
     I had to run the program multiple times with following parameters:

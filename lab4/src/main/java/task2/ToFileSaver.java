@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-class TimeToFileSaver {
+class ToFileSaver {
 
     private static int[] cOccurrences;
     private static long[] cTimeSum;
@@ -63,11 +63,11 @@ class TimeToFileSaver {
     }
 
     private static void setProducerFileName(String producerFileName) {
-        TimeToFileSaver.producerFileName = producerFileName;
+        ToFileSaver.producerFileName = producerFileName;
     }
 
     private static void setConsumerFileName(String consumerFileName) {
-        TimeToFileSaver.consumerFileName = consumerFileName;
+        ToFileSaver.consumerFileName = consumerFileName;
     }
 
     static void initializeDataCollecting(int bufferSize, int numberOfProducersConsumers, boolean isNaive) {

@@ -21,7 +21,7 @@ public class Consumer extends Thread {
                 long time = System.nanoTime();
                 buffer.take(randomValue);
                 time = System.nanoTime() - time;
-                TimeToFileSaver.addConsumerTime(randomValue, time);
+                ToFileSaver.addConsumerTime(randomValue, time);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

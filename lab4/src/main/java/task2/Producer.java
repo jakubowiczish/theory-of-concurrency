@@ -21,7 +21,7 @@ public class Producer extends Thread {
                 long time = System.nanoTime();
                 buffer.put(randomValue);
                 time = System.nanoTime() - time;
-                TimeToFileSaver.addProducerTime(randomValue, time);
+                ToFileSaver.addProducerTime(randomValue, time);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
