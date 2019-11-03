@@ -5,13 +5,29 @@ import java.util.stream.IntStream;
 import static task2.TimeToFileSaver.initializeDataCollecting;
 import static task2.TimeToFileSaver.saveCollectedData;
 
+/*
+    I had to run the program multiple times with following parameters:
+    numberOfElements: 1000, 10000, 100000 and numberOfProducersConsumers: 10, 100, 1000:
+
+    pairs: numberOfElements - numberOfProducersConsumers
+    1000 - 10,
+    1000 - 100,
+    1000 - 1000,
+    10000 - 10
+    10000 - 100,
+    10000 - 1000,
+    100000 - 10,
+    100000 - 100,
+    100000 - 1000
+    both for naive and better solution
+ */
+
 public class SecondTaskExecutioner {
 
-    private static final int numberOfElements = 100000;
-    private static final int numberOfProducersConsumers = 10;
+    private static final int numberOfElements = 10000;
+    private static final int numberOfProducersConsumers = 1000;
 
     public static void execute() {
-
         executeNaive(numberOfElements, numberOfProducersConsumers);
 //        executeBetter(numberOfElements, numberOfProducersConsumers);
     }

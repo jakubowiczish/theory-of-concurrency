@@ -73,10 +73,10 @@ class TimeToFileSaver {
     static void initializeDataCollecting(int bufferSize, int numberOfProducersConsumers, boolean isNaive) {
         initialize(bufferSize);
 
-        String prefix = isNaive ? "./Naive" : "./Better";
+        String type = isNaive ? "Naive" : "Better";
 
-        setConsumerFileName(prefix + "_Consumer_M" + bufferSize + "N" + numberOfProducersConsumers + ".txt");
-        setProducerFileName(prefix + "_Producer_M" + bufferSize + "N" + numberOfProducersConsumers + ".txt");
+        setConsumerFileName(type + "_Consumer_M" + bufferSize + "N" + numberOfProducersConsumers + ".txt");
+        setProducerFileName(type + "_Producer_M" + bufferSize + "N" + numberOfProducersConsumers + ".txt");
     }
 
     static void saveCollectedData() {
