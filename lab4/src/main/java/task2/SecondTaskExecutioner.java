@@ -1,50 +1,45 @@
 package task2;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
+
+import static task2.TimeToFileSaver.initializeDataCollecting;
+import static task2.TimeToFileSaver.saveCollectedData;
 
 public class SecondTaskExecutioner {
 
+    private static final int numberOfElements = 100000;
+    private static final int numberOfProducersConsumers = 10;
+
     public static void execute() {
-        int numberOfElements = 1000;
-        int numberOfProducers = 10;
-        int numberOfConsumers = 10;
 
-//        executeNaive(numberOfElements, numberOfProducers, numberOfConsumers);
-        executeBetter(numberOfElements, numberOfProducers, numberOfConsumers);
+        executeNaive(numberOfElements, numberOfProducersConsumers);
+//        executeBetter(numberOfElements, numberOfProducersConsumers);
     }
 
-    private static void executeNaive(int numberOfElements, int numberOfProducers, int numberOfConsumers) {
-        Buffer naiveBuffer = new NaiveBuffer(numberOfElements);
+    private static void executeNaive(int bufferSize, int numberOfProducersConsumers) {
+        initializeDataCollecting(bufferSize, numberOfProducersConsumers, true);
 
-        Producer[] producers = getInitializedProducers(naiveBuffer, numberOfProducers);
-        Consumer[] consumers = getInitializedConsumers(naiveBuffer, numberOfConsumers);
+        Buffer naiveBuffer = new NaiveBuffer(bufferSize);
 
-        ExecutorService executorService = Executors.newFixedThreadPool(20);
-        IntStream.range(0, 10)
-                .forEach(i -> {
-                    executorService.submit(producers[i]);
-                    executorService.submit(consumers[i]);
-                });
+        Producer[] producers = getInitializedProducers(naiveBuffer, numberOfProducersConsumers);
+        Consumer[] consumers = getInitializedConsumers(naiveBuffer, numberOfProducersConsumers);
 
-        executorService.shutdown();
+        runProcesses(producers, consumers);
+
+        saveCollectedData();
     }
 
-    private static void executeBetter(int numberOfElements, int numberOfProducers, int numberOfConsumers) {
-        Buffer betterBuffer = new BetterBuffer(numberOfElements);
+    private static void executeBetter(int bufferSize, int numberOfProducersConsumers) {
+        initializeDataCollecting(bufferSize, numberOfProducersConsumers, false);
 
-        Producer[] producers = getInitializedProducers(betterBuffer, numberOfProducers);
-        Consumer[] consumers = getInitializedConsumers(betterBuffer, numberOfConsumers);
+        Buffer betterBuffer = new BetterBuffer(bufferSize);
 
-        ExecutorService executorService = Executors.newFixedThreadPool(20);
-        IntStream.range(0, 10)
-                .forEach(i -> {
-                    executorService.submit(producers[i]);
-                    executorService.submit(consumers[i]);
-                });
+        Producer[] producers = getInitializedProducers(betterBuffer, numberOfProducersConsumers);
+        Consumer[] consumers = getInitializedConsumers(betterBuffer, numberOfProducersConsumers);
 
-        executorService.shutdown();
+        runProcesses(producers, consumers);
+
+        saveCollectedData();
     }
 
     private static Producer[] getInitializedProducers(Buffer buffer, int numberOfProducers) {
@@ -53,10 +48,32 @@ public class SecondTaskExecutioner {
                 .toArray(Producer[]::new);
     }
 
+    private static void runProcesses(Producer[] producers, Consumer[] consumers) {
+        IntStream.range(0, numberOfProducersConsumers).forEach(i -> {
+            producers[i].start();
+            consumers[i].start();
+        });
+
+        sleep(4000);
+
+        IntStream.range(0, numberOfProducersConsumers).forEach(i -> {
+            producers[i].interrupt();
+            consumers[i].interrupt();
+        });
+    }
+
     private static Consumer[] getInitializedConsumers(Buffer buffer, int numberOfConsumers) {
         return IntStream.range(0, numberOfConsumers)
                 .mapToObj(i -> new Consumer(buffer))
                 .toArray(Consumer[]::new);
+    }
+
+    private static void sleep(long l) {
+        try {
+            Thread.sleep(l);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
