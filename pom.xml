@@ -13,10 +13,19 @@
         <module>lab2</module>
         <module>lab3</module>
         <module>lab4</module>
+        <module>lab5</module>
     </modules>
 
     <properties>
         <maven.compiler.release>11</maven.compiler.release>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+        </dependency>
+    </dependencies>
 
 </project>
