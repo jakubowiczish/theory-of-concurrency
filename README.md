@@ -1,6 +1,6 @@
-# My solutions to various problems for Theory Of Concurrency assignment.
-
 [![Build Status](https://travis-ci.org/jakubowiczish/theory-of-concurrency.svg?branch=master)](https://travis-ci.org/jakubowiczish/theory-of-concurrency)
+
+# My solutions to various problems for Theory Of Concurrency assignment.
 
 ## Tasks:
 
