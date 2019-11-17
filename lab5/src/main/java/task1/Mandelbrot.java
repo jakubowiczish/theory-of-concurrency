@@ -19,11 +19,16 @@ public class Mandelbrot extends JFrame {
 
     private ExecutorService executorService;
 
+    private int numberOfThreads, numberOfTasks;
+
     public Mandelbrot(boolean isPixelModeEnabled, int numberOfThreads, int numberOfTasks) {
         super("Mandelbrot Set");
         setBounds(100, 100, 800, 600);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        this.numberOfThreads = numberOfThreads;
+        this.numberOfTasks = numberOfTasks;
 
         this.taskWidth = isPixelModeEnabled ? 1 : getWidth();
         this.taskHeight = isPixelModeEnabled ? 1 : getHeight() / numberOfTasks;
@@ -34,15 +39,25 @@ public class Mandelbrot extends JFrame {
 
     @Override
     public void paint(Graphics g) {
-        long startTime = System.currentTimeMillis();
+        System.out.println("Threads: " + numberOfThreads + ", tasks: " + numberOfTasks);
 
-        addValuesToTaskResultList();
-        addValuesToResultsToBeDrawnList();
+        for (int i = 0; i < 11; i++) { // 11 - ignore first one
+            clearLists();
+            long startTime = System.currentTimeMillis();
 
-        long resultTime = System.currentTimeMillis() - startTime;
+            addValuesToTaskResultList();
+            addValuesToResultsToBeDrawnList();
 
-        logCalculationTime(resultTime);
-        drawImage(g);
+            long resultTime = System.currentTimeMillis() - startTime;
+
+            System.out.println(resultTime);
+            drawImage(g);
+        }
+    }
+
+    private void clearLists() {
+        taskResultList.clear();
+        resultsToBeDrawn.clear();
     }
 
     private void addValuesToTaskResultList() {
@@ -70,9 +85,5 @@ public class Mandelbrot extends JFrame {
         for (TaskResult taskResult : resultsToBeDrawn) {
             g.drawImage(taskResult.getImage(), taskResult.getX(), taskResult.getY(), this);
         }
-    }
-
-    private void logCalculationTime(long calculationTime) {
-        System.out.println("Time of calculation: " + calculationTime);
     }
 }
