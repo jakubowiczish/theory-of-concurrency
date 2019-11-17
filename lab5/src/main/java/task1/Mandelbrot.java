@@ -4,43 +4,40 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Mandelbrot extends JFrame {
 
-    private final int MAX_ITER = 570;
-    private final double ZOOM = 150;
+    private int taskWidth;
+    private int taskHeight;
 
-    private final int imageHeight = 600;
-    private final int imageWidth = 800;
+    private List<Future<TaskResult>> taskResultList;
+    private List<TaskResult> resultsToBeDrawn;
 
-    private final int numberOfChunksX;
-    private final int numberOfChunksY;
+    private ExecutorService executorService;
 
-    private List<ChunkResult> chunkResultList;
-
-    public Mandelbrot(int numberOfChunksX, int numberOfChunksY) {
+    public Mandelbrot(boolean isPixelModeEnabled, int numberOfThreads, int numberOfTasks) {
         super("Mandelbrot Set");
-
-        this.numberOfChunksX = numberOfChunksX;
-        this.numberOfChunksY = numberOfChunksY;
-
-        chunkResultList = new LinkedList<>();
-
-        setBounds(100, 100, imageWidth, imageHeight);
+        setBounds(100, 100, 800, 600);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        this.taskWidth = isPixelModeEnabled ? 1 : getWidth();
+        this.taskHeight = isPixelModeEnabled ? 1 : getHeight() / numberOfTasks;
+        this.taskResultList = new LinkedList<>();
+        this.resultsToBeDrawn = new LinkedList<>();
+        this.executorService = Executors.newFixedThreadPool(numberOfThreads);
     }
 
     @Override
     public void paint(Graphics g) {
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        CompletionService<ChunkResult> completionService = new ExecutorCompletionService<>(executor);
-
         long startTime = System.currentTimeMillis();
 
-        submitChunks(completionService);
-        addResultsToChunkResultList(completionService);
+        addValuesToTaskResultList();
+        addValuesToResultsToBeDrawnList();
 
         long resultTime = System.currentTimeMillis() - startTime;
 
@@ -48,27 +45,21 @@ public class Mandelbrot extends JFrame {
         drawImage(g);
     }
 
-    private void submitChunks(CompletionService<ChunkResult> completionService) {
-        int chunkWidth = imageWidth / numberOfChunksX;
-        int chunkHeight = imageHeight / numberOfChunksY;
+    private void addValuesToTaskResultList() {
+        final double ZOOM = 150;
 
-        for (int y = 0; y < numberOfChunksY; y++) {
-            for (int x = 0; x < numberOfChunksX; x++) {
-                int iX = x * chunkWidth;
-                int iY = y * chunkHeight;
-
-                Chunk chunk = new Chunk(iX, iY, chunkWidth, chunkHeight);
-                completionService.submit(chunk);
+        for (int y = 0; y < getHeight(); y += taskHeight) {
+            for (int x = 0; x < getWidth(); x += taskWidth) {
+                taskResultList.add(new Task(x, y, taskWidth, taskHeight, ZOOM, executorService)
+                        .getTaskResult());
             }
         }
     }
 
-    private void addResultsToChunkResultList(CompletionService<ChunkResult> completionService) {
-        for (int i = 0; i < numberOfChunksY * numberOfChunksX; ++i) {
+    private void addValuesToResultsToBeDrawnList() {
+        for (Future<TaskResult> taskResult : taskResultList) {
             try {
-                Future<ChunkResult> result = completionService.take();
-                ChunkResult chunkResult = result.get();
-                chunkResultList.add(chunkResult);
+                resultsToBeDrawn.add(taskResult.get());
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
@@ -76,8 +67,8 @@ public class Mandelbrot extends JFrame {
     }
 
     private void drawImage(Graphics g) {
-        for (ChunkResult chunkResult : chunkResultList) {
-            g.drawImage(chunkResult.getImage(), chunkResult.getX(), chunkResult.getY(), this);
+        for (TaskResult taskResult : resultsToBeDrawn) {
+            g.drawImage(taskResult.getImage(), taskResult.getX(), taskResult.getY(), this);
         }
     }
 
