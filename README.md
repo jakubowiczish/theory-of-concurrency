@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jakubowiczish/theory-of-concurrency.svg?branch=master)](https://travis-ci.org/jakubowiczish/theory-of-concurrency)
+<img src="https://travis-ci.org/jakubowiczish/theory-of-concurrency.svg?branch=master" width="200">
 
 # My solutions to various problems for Theory Of Concurrency assignment.
 
