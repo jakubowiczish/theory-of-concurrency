@@ -25,13 +25,14 @@ function task3(cb) {
 function loop(n) {
     if (n === 1) {
         task1(function () {
-            console.log("done !");
+            console.log("Done!");
         });
         return;
     }
+
     task1(function () {
         loop(n - 1)
     });
 }
 
-loop(3);
+loop(2);
