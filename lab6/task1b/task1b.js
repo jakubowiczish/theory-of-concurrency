@@ -1,3 +1,5 @@
+async = require("async");
+
 function printAsync(s, cb) {
     var delay = Math.floor((Math.random() * 1000) + 500);
     setTimeout(function () {
@@ -22,6 +24,12 @@ function task3(cb) {
     printAsync("3", cb);
 }
 
+// wywolanie sekwencji zadan
+//task1(function() {
+//    console.log('done!');
+//});
+
+
 /*
 ** Zadanie:
 ** Napisz funkcje loop(n), ktora powoduje wykonanie powyzszej
@@ -30,16 +38,14 @@ function task3(cb) {
 */
 
 function loop(n) {
-    if (n === 1) {
-        task1(function () {
-            console.log("Done!");
-        });
-        return;
+    var array_of_tasks = [];
+
+    for (var i = 0; i < n; ++i) {
+        array_of_tasks.push(task1);
     }
 
-    task1(function () {
-        loop(n - 1)
+    async.waterfall(array_of_tasks, function (err, result) {
+        console.log("Done!");
     });
 }
-
-loop(2);
+loop(3);

@@ -1,0 +1,23 @@
+{
+  "name": "theory-of-concurrency",
+  "version": "1.0.0",
+  "description": "theory-of-concurrency",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run_lab6": "node lab6/task1a/task1a.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakubowiczish/theory-of-concurrency.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakubowiczish/theory-of-concurrency/issues"
+  },
+  "homepage": "https://github.com/jakubowiczish/theory-of-concurrency#readme",
+  "dependencies": {
+    "async": "^3.1.0"
+  }
+}
