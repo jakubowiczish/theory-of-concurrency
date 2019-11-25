@@ -49,4 +49,4 @@ function loop(n) {
     });
 }
 
-loop(3);
+loop(2);

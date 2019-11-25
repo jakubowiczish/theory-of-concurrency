@@ -4,7 +4,9 @@
   "description": "theory-of-concurrency",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No tests available for this project\" && exit 0"
+    "test": "echo \"No tests available for this project\" && exit 0",
+    "build_lab6": "node lab6/task1a/task1a.js && node lab6/task1b/task1b.js && node lab6/task2/task2.js && node lab6/test_program/test_program.js",
+    "build": "npm run build_lab6"
   },
   "repository": {
     "type": "git",
