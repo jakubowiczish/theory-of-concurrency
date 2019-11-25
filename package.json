@@ -4,8 +4,7 @@
   "description": "theory-of-concurrency",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "run_lab6": "node lab6/task1a/task1a.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

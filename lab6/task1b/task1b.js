@@ -1,7 +1,7 @@
-async = require("async");
+const async = require("async");
 
 function printAsync(s, cb) {
-    var delay = Math.floor((Math.random() * 1000) + 500);
+    let delay = Math.floor((Math.random() * 1000) + 500);
     setTimeout(function () {
         console.log(s);
         if (cb) cb();
@@ -44,7 +44,7 @@ function loop(n) {
         array_of_tasks.push(task1);
     }
 
-    async.waterfall(array_of_tasks, function (err, result) {
+    async.waterfall(array_of_tasks, function () {
         console.log("Done!");
     });
 }
