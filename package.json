@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jakubowiczish/theory-of-concurrency#readme",
   "dependencies": {
-    "async": "^3.1.0"
+    "async": "^3.1.0",
+    "babel": "^6.23.0"
   }
 }

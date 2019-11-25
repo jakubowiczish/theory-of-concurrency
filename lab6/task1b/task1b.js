@@ -38,9 +38,9 @@ function task3(cb) {
 */
 
 function loop(n) {
-    var array_of_tasks = [];
+    let array_of_tasks = [];
 
-    for (var i = 0; i < n; ++i) {
+    for (let i = 0; i < n; ++i) {
         array_of_tasks.push(task1);
     }
 
@@ -48,4 +48,5 @@ function loop(n) {
         console.log("Done!");
     });
 }
+
 loop(3);

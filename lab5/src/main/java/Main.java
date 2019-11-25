@@ -18,7 +18,7 @@ public class Main {
          *
          * results available at /resources/results.pdf
          */
-        new Mandelbrot(true, 8, 1)
+        new Mandelbrot(false, 8, 8)
                 .setVisible(true);
     }
 }
