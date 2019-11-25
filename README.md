@@ -1,5 +1,7 @@
 <img src="https://github.com/jakubowiczish/theory-of-concurrency/workflows/Java CI/badge.svg" width="200">
 
+<img src="https://github.com/jakubowiczish/theory-of-concurrency/workflows/Node CI/badge.svg" width="200">
+
 # My solutions to various problems for Theory Of Concurrency assignment.
 
 ## Tasks:
