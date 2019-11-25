@@ -40,17 +40,9 @@ C = function (cb) {
 };
 
 D = function (cb) {
-    printAsync("Done", cb);
+    printAsync("DONE", cb);
 };
 
-inparallel([A, B, C,
-        A, B, C,
-        A, B, C,
-        A, B, C,
-        A, B, C,
-        A, B, C,
-        A, B, C,
-        A, B, C],
-    D);
+inparallel([A, B, C, A, B, C, A, B, C], D);
 
 // kolejnosc: A, B, C - dowolna, na koncu zawsze "Done"
