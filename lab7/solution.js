@@ -20,7 +20,7 @@ Fork.prototype.acquire = function (id, callback) {
         setTimeout(() => {
 
             globalDelay += delay;
-            console.log(globalDelay);
+            // console.log(globalDelay);
 
             if (this.state === 1) {
                 delay *= 2;
@@ -113,10 +113,15 @@ Philosopher.prototype.startAsym = function (count) {
     let loop = () => {
         if (count > 0) {
             console.log("loop: " + count + " " + id);
-            let forkIndex = id % 2 === 0 ? f2 : f1;
-            forks[forkIndex].acquire(id, eatWithSecondFork);
+            let fork = id % 2 === 0 ? f2 : f1;
+            forks[fork].acquire(id, eatWithSecondFork);
             count--;
         }
+    };
+
+    let eatWithSecondFork = () => {
+        let fork = id % 2 === 0 ? f1 : f2;
+        forks[fork].acquire(id, eat);
     };
 
     let think = () => {
@@ -133,11 +138,6 @@ Philosopher.prototype.startAsym = function (count) {
             forks[f2].release();
             think();
         }, Math.floor(Math.random() * 100));
-    };
-
-    let eatWithSecondFork = () => {
-        let fork = id % 2 === 0 ? f1 : f2;
-        forks[fork].acquire(id, eat);
     };
 
     loop();
