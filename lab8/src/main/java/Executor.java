@@ -14,7 +14,7 @@ public class Executor extends Thread {
 
     @Override
     public void run() {
-        PDrawer drawer = new GraphDrawer();
+        PDrawer<Vertex> drawer = new GraphDrawer();
 
         Vertex s = new Vertex(null, null, "S");
 
