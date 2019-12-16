@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"No tests available for this project\" && exit 0",
     "build_lab6": "node lab6/task1a/task1a.js && node lab6/task1b/task1b.js && node lab6/task2/task2.js && node lab6/test_program/test_program.js",
-    "build_lab7": "node lab7/solution.js",
+    "build_lab7": "node lab7/naive_and_asym.js && node lab7/waiter.js",
     "build": "npm run build_lab6 && npm run build_lab7"
   },
   "repository": {

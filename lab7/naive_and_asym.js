@@ -143,18 +143,6 @@ Philosopher.prototype.startAsym = function (count) {
     loop();
 };
 
-Philosopher.prototype.startConductor = function (count) {
-    let forks = this.forks,
-        f1 = this.f1,
-        f2 = this.f2,
-        id = this.id;
-
-    // zaimplementuj rozwiazanie z kelnerem
-    // kazdy filozof powinien 'count' razy wykonywac cykl
-    // podnoszenia widelcow -- jedzenia -- zwalniania widelcow
-};
-
-
 let N = 5;
 let forks = [];
 let philosophers = [];
@@ -169,7 +157,6 @@ for (i = 0; i < N; i++) {
 }
 
 for (i = 0; i < N; i++) {
-    // philosophers[i].startNaive(10);
+    philosophers[i].startNaive(10);
     philosophers[i].startAsym(10);
-    // philosophers[i].startConductor(10);
 }
