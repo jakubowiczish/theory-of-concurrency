@@ -82,11 +82,6 @@ let Philosopher = function (id, forks, waiter) {
     return this;
 };
 
-calculateTimeDifference = function (startTime, endTime) {
-    return (endTime[0] - startTime[0]) * 1e9 + (endTime[1] - startTime[1]);
-};
-
-
 Philosopher.prototype.startConductor = function (count) {
     let forks = this.forks,
         f1 = this.f1,
@@ -130,7 +125,7 @@ Philosopher.prototype.startConductor = function (count) {
     loop();
 };
 
-let N = 25;
+let N = 10;
 let forks = [];
 let philosophers = [];
 
