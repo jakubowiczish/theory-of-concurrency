@@ -157,6 +157,6 @@ for (i = 0; i < N; i++) {
 }
 
 for (i = 0; i < N; i++) {
-    philosophers[i].startNaive(10);
+    // philosophers[i].startNaive(10);
     philosophers[i].startAsym(10);
 }
