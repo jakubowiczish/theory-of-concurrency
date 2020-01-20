@@ -9,12 +9,12 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>lab1</module>
-        <module>lab2</module>
-        <module>lab3</module>
-        <module>lab4</module>
-        <module>lab5</module>
-        <module>lab8</module>
+        <module>lab01</module>
+        <module>lab02</module>
+        <module>lab03</module>
+        <module>lab04</module>
+        <module>lab05</module>
+        <module>lab08</module>
     </modules>
 
     <properties>
