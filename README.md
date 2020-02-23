@@ -1,5 +1,9 @@
+<img src="https://img.shields.io/github/languages/code-size/jakubowiczish/theory-of-concurrency?style=for-the-badge"> <img src="https://img.shields.io/github/repo-size/jakubowiczish/theory-of-concurrency?color=purple&style=for-the-badge"> 
+<img src="https://img.shields.io/github/languages/count/jakubowiczish/theory-of-concurrency?color=green&style=for-the-badge"> 
+<img src="https://img.shields.io/github/languages/top/jakubowiczish/theory-of-concurrency?color=orange&style=for-the-badge">
+<img src="https://img.shields.io/github/commit-activity/m/jakubowiczish/theory-of-concurrency?color=lime&style=for-the-badge">
+<img src="https://img.shields.io/github/last-commit/jakubowiczish/theory-of-concurrency?color=darkgreen&style=for-the-badge">
 <img src="https://github.com/jakubowiczish/theory-of-concurrency/workflows/Java CI/badge.svg" width="200">
-
 <img src="https://github.com/jakubowiczish/theory-of-concurrency/workflows/Node CI/badge.svg" width="200">
 
 # My solutions to various problems for Theory Of Concurrency assignment.
