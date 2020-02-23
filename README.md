@@ -3,8 +3,12 @@
 <img src="https://img.shields.io/github/languages/top/jakubowiczish/theory-of-concurrency?color=orange&style=for-the-badge">
 <img src="https://img.shields.io/github/commit-activity/m/jakubowiczish/theory-of-concurrency?color=lime&style=for-the-badge">
 <img src="https://img.shields.io/github/last-commit/jakubowiczish/theory-of-concurrency?color=darkgreen&style=for-the-badge">
-<img src="https://github.com/jakubowiczish/theory-of-concurrency/workflows/Java CI/badge.svg" width="200">
-<img src="https://github.com/jakubowiczish/theory-of-concurrency/workflows/Node CI/badge.svg" width="200">
+
+<img src="https://github.com/jakubowiczish/theory-of-concurrency/workflows/Java CI/badge.svg" width="180"> <img src="https://github.com/jakubowiczish/theory-of-concurrency/workflows/Node CI/badge.svg" width="180"> 
+<img src="https://tokei.rs/b1/github/jakubowiczish/theory-of-concurrency?category=code" width="200"> 
+<img src="https://tokei.rs/b1/github/jakubowiczish/theory-of-concurrency?category=lines" width="175">
+<img src="https://tokei.rs/b1/github/jakubowiczish/theory-of-concurrency?category=files" width="90">
+
 
 # My solutions to various problems for Theory Of Concurrency assignment.
 
@@ -29,7 +33,7 @@ http://galaxy.agh.edu.pl/~kzajac/dydakt/tw/index.html
 <p align="center">
 <img src="https://raw.githubusercontent.com/jakubowiczish/theory-of-concurrency/master/lab_tasks/lab2.jpeg" width="100%">
 </p>
-
++
 #
 ### Laboratory 3
 #
